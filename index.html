@@ -634,15 +634,25 @@ const ICO = {
 
 async function vSeries(slug){
   page(`${hdr('Series')}<div class="spin"></div>`);
-  let d;
+  let d, galleryCounts = {};
   try {
     const r = await api('/pornhwa/' + encodeURIComponent(slug), { params: { 'includes[]': ['characters', 'chapters'] } });
     d = r.data;
+
+    // Preload gallery counts so the chapter badges show immediately
+    try {
+      const html = await siteFetch(`/pornhwa/${d.id}/${encodeURIComponent(d.slug)}/gallery`);
+      const g = jsonAfter(nextPayload(html), 'initialGalleryPage');
+      (g?.panels || []).forEach(p => {
+        const key = p.chapter_start ?? p.gallery_chapter_number;
+        if (key) galleryCounts[key] = (galleryCounts[key] || 0) + 1;
+      });
+    } catch {}
   } catch (e){ page(`${hdr('Series')}${errCard(e)}`); return; }
 
   const site = seriesUrl(d);
   const rd = readerUrl(d);
-  let selChars = new Set(), tagFilter = '', sortDesc = false, galleryCounts = {};
+  let selChars = new Set(), tagFilter = '', sortDesc = false;
 
   page(`${hdr(d.title, { right: `<button class="ico" onclick="window.open('${site}','_blank')">${ICO.ext}</button>` })}
     <div class="hero">

@@ -5,27 +5,29 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#0f0b14">
 <title>PornhwaDB</title>
 <style>
 :root{
-  --bg:#000; --bg2:#1c1c1e; --bg3:#2c2c2e; --bg4:#3a3a3c;
-  --sep:rgba(84,84,88,.55); --txt:#fff; --txt2:rgba(235,235,245,.62); --txt3:rgba(235,235,245,.32);
-  --blue:#0a84ff; --pink:#ff375f; --green:#30d158; --orange:#ff9f0a; --purple:#bf5af2;
+  --bg:#0f0b14; --bg2:#191322; --bg3:#241b32; --bg4:#332545;
+  --sep:rgba(167,139,250,.16); --txt:#f2ecf9; --txt2:rgba(233,220,250,.62); --txt3:rgba(233,220,250,.32);
+  --blue:#a78bfa; --pink:#f472b6; --green:#4ade80; --orange:#fbbf24;
+  --accbg:rgba(167,139,250,.18);
   --r:12px; --tab:64px;
 }
 @media (prefers-color-scheme:light){
   :root:not([data-theme="dark"]){
-    --bg:#f2f2f7; --bg2:#fff; --bg3:#e9e9ee; --bg4:#dcdce2;
-    --sep:rgba(60,60,67,.2); --txt:#000; --txt2:rgba(60,60,67,.6); --txt3:rgba(60,60,67,.3);
-    --blue:#007aff; --pink:#ff2d55; --green:#34c759; --orange:#ff9500; --purple:#af52de;
+    --bg:#f6f2fb; --bg2:#ffffff; --bg3:#ece5f7; --bg4:#ddd2ee;
+    --sep:rgba(88,60,140,.16); --txt:#1a1320; --txt2:rgba(40,25,60,.62); --txt3:rgba(40,25,60,.38);
+    --blue:#7c3aed; --pink:#db2777; --green:#16a34a; --orange:#d97706;
+    --accbg:rgba(124,58,237,.12);
   }
 }
 :root[data-theme="light"]{
-  --bg:#f2f2f7; --bg2:#fff; --bg3:#e9e9ee; --bg4:#dcdce2;
-  --sep:rgba(60,60,67,.2); --txt:#000; --txt2:rgba(60,60,67,.6); --txt3:rgba(60,60,67,.3);
-  --blue:#007aff; --pink:#ff2d55; --green:#34c759; --orange:#ff9500; --purple:#af52de;
+  --bg:#f6f2fb; --bg2:#ffffff; --bg3:#ece5f7; --bg4:#ddd2ee;
+  --sep:rgba(88,60,140,.16); --txt:#1a1320; --txt2:rgba(40,25,60,.62); --txt3:rgba(40,25,60,.38);
+  --blue:#7c3aed; --pink:#db2777; --green:#16a34a; --orange:#d97706;
+  --accbg:rgba(124,58,237,.12);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%}
@@ -43,7 +45,6 @@ input,select,textarea{font:inherit;color:var(--txt);background:var(--bg3);border
 input::placeholder{color:var(--txt3)}
 h1,h2,h3,h4,p{margin:0}
 
-/* ---------- shell ---------- */
 #app{min-height:100vh;padding-top:env(safe-area-inset-top)}
 .large{padding:14px 16px 6px}
 .large h1{font-size:34px;font-weight:800;letter-spacing:-.6px}
@@ -65,7 +66,6 @@ h1,h2,h3,h4,p{margin:0}
 .sec-h h2{font-size:20px;font-weight:700;letter-spacing:-.3px}
 .sec-h a{font-size:14px;color:var(--blue)}
 
-/* ---------- tabbar ---------- */
 .tabbar{
   position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;
   height:calc(var(--tab) + env(safe-area-inset-bottom));
@@ -80,10 +80,8 @@ h1,h2,h3,h4,p{margin:0}
 .tabbar svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.8;
   stroke-linecap:round;stroke-linejoin:round}
 
-/* ---------- cards ---------- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:14px 10px}
-.hrow{display:flex;gap:10px;overflow-x:auto;padding:0 16px 4px;scroll-snap-type:x mandatory;
-  scrollbar-width:none}
+.hrow{display:flex;gap:10px;overflow-x:auto;padding:0 16px 4px;scroll-snap-type:x mandatory;scrollbar-width:none}
 .hrow::-webkit-scrollbar{display:none}
 .hrow .card{width:112px;flex:0 0 auto;scroll-snap-align:start}
 .card{display:block}
@@ -96,12 +94,11 @@ h1,h2,h3,h4,p{margin:0}
 .badge{position:absolute;left:6px;top:6px;font-size:9.5px;font-weight:700;letter-spacing:.2px;
   padding:3px 6px;border-radius:6px;text-transform:uppercase;
   background:rgba(0,0,0,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff}
-.badge.ongoing{background:rgba(48,209,88,.9);color:#000}
-.badge.completed{background:rgba(10,132,255,.9)}
-.badge.hiatus{background:rgba(255,159,10,.92);color:#000}
-.badge.orient{left:auto;right:6px;background:rgba(191,90,242,.9)}
+.badge.ongoing{background:rgba(74,222,128,.92);color:#04120a}
+.badge.completed{background:rgba(167,139,250,.92);color:#12061f}
+.badge.hiatus{background:rgba(251,191,36,.92);color:#1a1200}
+.badge.orient{left:auto;right:6px;background:rgba(244,114,182,.9)}
 
-/* ---------- rows ---------- */
 .rows{background:var(--bg2);border-radius:var(--r);overflow:hidden;margin:0 16px}
 .row{display:flex;gap:12px;align-items:center;padding:10px 12px;border-bottom:.5px solid var(--sep)}
 .row:last-child{border-bottom:0}
@@ -112,47 +109,130 @@ h1,h2,h3,h4,p{margin:0}
 .row .rsub{font-size:12.5px;color:var(--txt2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .row .rright{font-size:13px;color:var(--txt2);flex:0 0 auto}
 
-/* ---------- hero ---------- */
-.hero{position:relative;overflow:hidden;padding:16px 16px 20px}
+.hero{position:relative;overflow:hidden;padding:16px 16px 14px}
 .hero-bg{position:absolute;inset:-40px;background-size:cover;background-position:center;
-  filter:blur(38px) saturate(1.5) brightness(.5);transform:scale(1.15)}
+  filter:blur(38px) saturate(1.4) brightness(.5);transform:scale(1.15)}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(var(--bg) 12%,transparent 70%,var(--bg))}
 .hero-in{position:relative;display:flex;gap:14px}
-.hero-cover{width:118px;flex:0 0 auto;aspect-ratio:3/4.3;border-radius:12px;object-fit:cover;
-  box-shadow:0 10px 30px rgba(0,0,0,.5);background:var(--bg3)}
-.hero-meta{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px}
+.hero-cover{width:112px;flex:0 0 auto;aspect-ratio:3/4.3;border-radius:12px;object-fit:cover;
+  box-shadow:0 10px 30px rgba(30,10,60,.45);background:var(--bg3)}
+.hero-meta{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;gap:5px}
 .hero-meta h1{font-size:22px;font-weight:800;line-height:1.15;letter-spacing:-.4px}
 .hero-meta .sub{font-size:13px;color:var(--txt2)}
+
+.actrow{display:flex;gap:8px;padding:0 16px 12px;border-bottom:.5px solid var(--sep);margin:0 0 4px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:9px;
+  border:.5px solid var(--sep);background:var(--bg2);font-size:13px;font-weight:500;color:var(--txt)}
+.pill:active{background:var(--bg3)}
+.pill.on{background:var(--pink);border-color:var(--pink);color:#fff}
+.pill svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.subrow{display:flex;gap:16px;padding:10px 16px 12px;border-bottom:.5px solid var(--sep)}
+.linkbtn{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;
+  color:var(--txt2);text-decoration:underline;text-decoration-color:var(--sep);text-underline-offset:4px}
+.linkbtn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+
+.dtabs{display:flex;gap:22px;overflow-x:auto;padding:0 16px;border-bottom:.5px solid var(--sep);
+  scrollbar-width:none;position:sticky;top:0;z-index:15;
+  background:color-mix(in srgb, var(--bg) 92%, transparent);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.dtabs::-webkit-scrollbar{display:none}
+.dtabs button{padding:13px 0;font-size:14px;font-weight:600;color:var(--txt2);
+  border-bottom:2px solid transparent;white-space:nowrap;flex:0 0 auto}
+.dtabs button.on{color:var(--txt);border-bottom-color:var(--blue)}
+
 .tagline{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 4px}
 .chip{font-size:12px;padding:5px 10px;border-radius:999px;background:var(--bg3);color:var(--txt2)}
-.chip.blue{background:color-mix(in srgb,var(--blue) 22%,transparent);color:var(--blue)}
-.chip.on{background:var(--blue);color:#fff}
-.actions{display:flex;gap:8px;padding:14px 16px 4px}
-.btn{flex:1;text-align:center;padding:11px;border-radius:11px;background:var(--bg3);
-  font-size:14px;font-weight:600}
+.chip.blue{background:var(--accbg);color:var(--blue)}
+.btn{flex:1;text-align:center;padding:11px;border-radius:11px;background:var(--bg3);font-size:14px;font-weight:600}
 .btn.primary{background:var(--blue);color:#fff}
-.btn.on{background:var(--pink);color:#fff}
-.btn.danger{background:color-mix(in srgb,var(--pink) 20%,transparent);color:var(--pink)}
+.btn.danger{background:var(--accbg);color:var(--pink)}
 .btn:active{opacity:.7}
 .desc{padding:10px 16px;font-size:14.5px;line-height:1.5;color:var(--txt2);white-space:pre-wrap}
 .desc.clamp{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
 .more-btn{color:var(--blue);font-size:14px;padding:0 16px 8px;font-weight:600}
 
-/* ---------- misc ---------- */
-.stats-strip{display:flex;gap:8px;padding:8px 16px}
-.stat{flex:1;background:var(--bg2);border-radius:10px;padding:10px;text-align:center}
+/* pairing filter */
+.pfilter{padding:10px 16px 0}
+.pfilter .pf-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.pfilter .pf-head span{font-size:12px;color:var(--txt3);text-transform:uppercase;letter-spacing:.6px;font-weight:700}
+.pfilter .pf-head button{font-size:12.5px;color:var(--blue);font-weight:600}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:0 16px 4px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.pchip{display:flex;align-items:center;gap:7px;flex:0 0 auto;background:var(--bg2);
+  border:1px solid var(--sep);border-radius:999px;padding:3px 11px 3px 3px;font-size:12.5px;color:var(--txt2)}
+.pchip img{width:28px;height:28px;border-radius:50%;object-fit:cover;background:var(--bg3)}
+.pchip.on{background:var(--accbg);border-color:var(--blue);color:var(--txt)}
+.pfbar{display:flex;gap:8px;padding:10px 16px 0}
+.pfbar select{flex:1;padding:8px 10px;font-size:13px;border-radius:9px}
+.pfbar .btn{flex:0 0 auto;padding:8px 12px;font-size:12.5px;border-radius:9px;background:var(--bg3)}
+.pfnote{padding:8px 16px 0;font-size:12.5px;color:var(--txt3)}
+
+.scene{display:flex;gap:10px;align-items:flex-start;padding:12px;border-bottom:.5px solid var(--sep)}
+.scene:last-child{border-bottom:0}
+.scene .bookmark{width:26px;height:26px;flex:0 0 auto;display:grid;place-items:center;
+  border-radius:7px;border:.5px solid var(--sep);color:var(--txt2)}
+.scene .bookmark svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.scene .sbody{flex:1;min-width:0}
+.scene .shead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.scene .chlab{font-size:11px;font-weight:700;letter-spacing:.9px;color:var(--txt3)}
+.scene .chnum{font-size:15px;font-weight:700;font-family:ui-monospace,Menlo,monospace}
+.chcount{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700;
+  padding:2px 6px;border-radius:6px;background:var(--accbg);color:var(--blue)}
+.chcount svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round}
+.scene .reader{width:26px;height:26px;flex:0 0 auto;display:grid;place-items:center;color:var(--blue)}
+.scene .reader svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round}
+.scene .sdesc{font-size:13.5px;color:var(--txt2);margin-top:3px;line-height:1.4}
+.scene .stags{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.scene .stag{font-size:11px;letter-spacing:.3px;text-transform:uppercase;padding:4px 8px;
+  border-radius:6px;border:.5px solid var(--sep);color:var(--txt2)}
+.scene .schars{display:flex;flex-wrap:wrap;gap:10px;margin-top:9px}
+.scene .schar{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--txt2)}
+.scene .schar img{width:26px;height:26px;border-radius:50%;object-fit:cover;background:var(--bg3)}
+
+.masonry{column-count:2;column-gap:8px;padding:0 16px}
+.panel{break-inside:avoid;margin-bottom:8px;position:relative;border-radius:10px;overflow:hidden;
+  background:var(--bg3);display:block}
+.panel img{width:100%;display:block}
+.panel .chbadge{position:absolute;left:8px;bottom:8px;font-size:11px;font-weight:600;color:#fff;
+  padding:3px 8px;border-radius:999px;background:rgba(20,8,35,.76);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.panel .chbadge i{font-style:normal;opacity:.65;margin-left:2px}
+.panel .likes{position:absolute;left:8px;top:8px;font-size:11px;font-weight:600;color:#fff;
+  padding:3px 7px;border-radius:999px;background:rgba(20,8,35,.6)}
+
+.lightbox{position:fixed;inset:0;z-index:150;background:rgba(10,4,18,.95);display:flex;
+  align-items:center;justify-content:center;padding:12px}
+.lightbox img{max-width:100%;max-height:88vh;object-fit:contain;border-radius:8px}
+.lightbox .lb-close{position:absolute;top:calc(14px + env(safe-area-inset-top));right:14px;
+  width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;
+  display:grid;place-items:center;font-size:20px}
+.lightbox .lb-ch{position:absolute;bottom:calc(20px + env(safe-area-inset-bottom));
+  left:50%;transform:translateX(-50%);font-size:12.5px;color:#fff;
+  background:rgba(0,0,0,.7);padding:6px 12px;border-radius:999px}
+
+.stats-strip{display:flex;gap:8px;padding:8px 16px;flex-wrap:wrap}
+.stat{flex:1;min-width:78px;background:var(--bg2);border-radius:10px;padding:10px;text-align:center}
 .stat b{display:block;font-size:17px}
 .stat span{font-size:10.5px;color:var(--txt3);text-transform:uppercase;letter-spacing:.4px}
+.dist{padding:0 16px}
+.distrow{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:12px;color:var(--txt2)}
+.distrow .dbar{flex:1;height:7px;border-radius:4px;background:var(--bg3);overflow:hidden}
+.distrow .dfill{height:100%;background:var(--orange)}
+
 .avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;background:var(--bg3);flex:0 0 auto}
 .avgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:12px 8px;padding:0 16px}
 .avcard{text-align:center}
 .avcard img{width:100%;aspect-ratio:1;border-radius:10px;object-fit:cover;background:var(--bg3)}
 .avcard span{display:block;font-size:11.5px;margin-top:5px;color:var(--txt2);
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.sentinel{height:1px}
 .loadmore{display:block;margin:18px auto;padding:11px 26px;border-radius:999px;
   background:var(--bg3);font-size:14px;font-weight:600;color:var(--txt2)}
-.empty{text-align:center;padding:60px 30px;color:var(--txt3);font-size:14px}
+.empty{text-align:center;padding:50px 30px;color:var(--txt3);font-size:14px}
 .err{margin:14px 16px;padding:14px;border-radius:var(--r);background:var(--bg2);
   border-left:3px solid var(--pink);font-size:13.5px;color:var(--txt2)}
 .err b{color:var(--txt);display:block;margin-bottom:4px}
@@ -161,16 +241,15 @@ h1,h2,h3,h4,p{margin:0}
 @keyframes sp{to{transform:rotate(360deg)}}
 .seg{display:flex;background:var(--bg3);border-radius:10px;padding:3px;margin:10px 16px}
 .seg button{flex:1;padding:7px;border-radius:8px;font-size:13px;font-weight:600;color:var(--txt2)}
-.seg button.on{background:var(--bg2);color:var(--txt);box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.seg button.on{background:var(--bg2);color:var(--txt);box-shadow:0 1px 3px rgba(30,10,60,.18)}
 .filters{display:flex;gap:8px;padding:10px 16px;overflow-x:auto;scrollbar-width:none}
 .filters::-webkit-scrollbar{display:none}
 .filters select{width:auto;flex:0 0 auto;padding:8px 10px;font-size:13px;border-radius:9px}
 .searchbar{padding:10px 16px}
 .searchbar input{border-radius:11px;padding:11px 14px}
 
-/* ---------- sheet ---------- */
 .sheet-wrap{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end}
-.sheet-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.55);opacity:0;transition:.25s}
+.sheet-backdrop{position:absolute;inset:0;background:rgba(15,5,28,.6);opacity:0;transition:.25s}
 .sheet{position:relative;width:100%;max-height:82vh;overflow:auto;background:var(--bg2);
   border-radius:18px 18px 0 0;padding:8px 16px calc(20px + env(safe-area-inset-bottom));
   transform:translateY(100%);transition:.28s cubic-bezier(.2,.8,.3,1)}
@@ -183,7 +262,6 @@ h1,h2,h3,h4,p{margin:0}
 .sheet-item:active{color:var(--blue)}
 .sheet-item.sel{color:var(--blue);font-weight:600}
 
-/* ---------- toast ---------- */
 #toast{position:fixed;left:50%;bottom:calc(var(--tab) + 22px + env(safe-area-inset-bottom));
   transform:translate(-50%,14px);z-index:200;background:var(--bg4);color:var(--txt);
   padding:10px 18px;border-radius:999px;font-size:13.5px;font-weight:600;opacity:0;
@@ -191,7 +269,6 @@ h1,h2,h3,h4,p{margin:0}
 #toast.on{opacity:1;transform:translate(-50%,0)}
 #toast.bad{background:var(--pink);color:#fff}
 
-/* ---------- setup ---------- */
 .setup{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:34px 26px}
 .setup h1{font-size:30px;font-weight:800;letter-spacing:-.6px;margin-bottom:6px}
 .setup p{color:var(--txt2);font-size:14px;margin-bottom:22px}
@@ -213,27 +290,26 @@ h1,h2,h3,h4,p{margin:0}
 <div id="toast"></div>
 
 <script>
-/* ============================================================
-   state / helpers
-   ============================================================ */
 const $ = s => document.querySelector(s);
 const app = $('#app');
 const SITE = 'https://pornhwadb.com';
+const READER = 'https://pornhwareader.com';
 const PH = 'data:image/svg+xml;utf8,' + encodeURIComponent(
-  '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="430"><rect width="100%" height="100%" fill="#2c2c2e"/><text x="50%" y="50%" fill="#6a6a6e" font-family="sans-serif" font-size="19" text-anchor="middle">no cover</text></svg>');
+  '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="430"><rect width="100%" height="100%" fill="#241b32"/><text x="50%" y="50%" fill="#7a6a92" font-family="sans-serif" font-size="19" text-anchor="middle">no image</text></svg>');
 
 const K = {
   get key(){ return localStorage.getItem('pwdb.key') || '' },
   set key(v){ v ? localStorage.setItem('pwdb.key', v) : localStorage.removeItem('pwdb.key') },
   get base(){ return (localStorage.getItem('pwdb.base') || SITE + '/api/v1').replace(/\/+$/,'') },
   set base(v){ localStorage.setItem('pwdb.base', (v || SITE + '/api/v1').replace(/\/+$/,'')) },
+  get proxy(){ return (localStorage.getItem('pwdb.proxy') || '').replace(/\/+$/,'') },
+  set proxy(v){ v ? localStorage.setItem('pwdb.proxy', v.replace(/\/+$/,'')) : localStorage.removeItem('pwdb.proxy') },
   get theme(){ return localStorage.getItem('pwdb.theme') || '' },
   set theme(v){ v ? localStorage.setItem('pwdb.theme', v) : localStorage.removeItem('pwdb.theme') }
 };
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const img = u => !u ? PH : (/^https?:/i.test(u) ? u : SITE + (u[0] === '/' ? '' : '/') + u);
-const stars = v => v == null ? '—' : '★'.repeat(Math.round(v)) + '☆'.repeat(Math.max(0, 5 - Math.round(v))) + ' ' + v.toFixed(1);
 const when = d => { if(!d) return ''; const t = new Date(d); const s = (Date.now() - t) / 1000;
   if (s < 60) return 'just now'; if (s < 3600) return Math.floor(s/60) + 'm ago';
   if (s < 86400) return Math.floor(s/3600) + 'h ago'; if (s < 2592000) return Math.floor(s/86400) + 'd ago';
@@ -241,6 +317,9 @@ const when = d => { if(!d) return ''; const t = new Date(d); const s = (Date.now
 const lblStatus = s => ({reading:'Reading', completed:'Completed', dropped:'Dropped',
   plan_to_read:'Plan to read', on_hold:'On hold', re_reading:'Re-reading'}[s] || s);
 const clsStatus = s => s === 'On Going' ? 'ongoing' : s === 'Completed' ? 'completed' : s === 'Hiatus' ? 'hiatus' : '';
+const seriesUrl = d => `${SITE}/pornhwa/${d.id}/${encodeURIComponent(d.slug)}`;
+const readerUrl = d => `${READER}/series/${d.id}/${encodeURIComponent(d.slug)}`;
+const sceneUrl = (d, c) => `${readerUrl(d)}/chapter-${c.chapterStart}?scene=${c.id}`;
 
 function toast(msg, bad){ const t = $('#toast'); t.textContent = msg; t.className = 'on' + (bad ? ' bad' : '');
   clearTimeout(t._h); t._h = setTimeout(() => t.className = '', 2400); }
@@ -250,13 +329,10 @@ function errCard(e){
   let hint = '';
   if (code === 'MISSING_API_KEY' || code === 'INVALID_API_KEY') hint = 'Check your API key in Settings.';
   else if (code === 'RATE_LIMITED' || code === 'MUTATION_RATE_LIMITED') hint = 'Slow down and retry in a moment.';
-  else if (code === 'NETWORK') hint = 'Could not reach the API. If the site blocks browser calls, point the base URL at your own proxy in Settings.';
+  else if (code === 'NETWORK') hint = 'Could not reach the API. Point the base URL at your proxy in Settings.';
   return `<div class="err"><b>${esc(code)}</b>${esc(e?.message || 'Request failed')}${hint ? '<br>' + esc(hint) : ''}</div>`;
 }
 
-/* ============================================================
-   api client (ETag aware)
-   ============================================================ */
 const memCache = new Map();
 
 async function api(path, opts = {}){
@@ -281,13 +357,9 @@ async function api(path, opts = {}){
 
   let res;
   try {
-    res = await fetch(url.href, {
-      method, headers,
-      body: opts.body !== undefined ? JSON.stringify(opts.body) : undefined
-    });
-  } catch (e) {
-    const err = new Error('Network request failed'); err.code = 'NETWORK'; throw err;
-  }
+    res = await fetch(url.href, { method, headers,
+      body: opts.body !== undefined ? JSON.stringify(opts.body) : undefined });
+  } catch { const e = new Error('Network request failed'); e.code = 'NETWORK'; throw e; }
 
   if (res.status === 304 && cached) return cached.body;
 
@@ -297,8 +369,7 @@ async function api(path, opts = {}){
 
   if (!res.ok){
     const err = new Error(body?.error || res.statusText || 'HTTP ' + res.status);
-    err.status = res.status; err.code = body?.code || 'HTTP_' + res.status; err.body = body;
-    throw err;
+    err.status = res.status; err.code = body?.code || 'HTTP_' + res.status; throw err;
   }
 
   if (cKey && body){
@@ -317,10 +388,41 @@ async function api(path, opts = {}){
   return body;
 }
 
-/* ============================================================
-   shell / router
-   ============================================================ */
-const scrollMem = new Map();
+function nextPayload(html){
+  const out = [];
+  const re = /self\.__next_f\.push\(\[1,("(?:[^"\\]|\\.)*")\]\)/g;
+  let m;
+  while ((m = re.exec(html))) { try { out.push(JSON.parse(m[1])); } catch {} }
+  return out.join('');
+}
+
+function jsonAfter(src, key){
+  const i = src.indexOf('"' + key + '":');
+  if (i < 0) return null;
+  const j = src.indexOf('{', i);
+  if (j < 0) return null;
+  let depth = 0, inStr = false, escp = false;
+  for (let k = j; k < src.length; k++){
+    const ch = src[k];
+    if (inStr){
+      if (escp) escp = false;
+      else if (ch === '\\') escp = true;
+      else if (ch === '"') inStr = false;
+      continue;
+    }
+    if (ch === '"') { inStr = true; continue; }
+    if (ch === '{') depth++;
+    else if (ch === '}'){ depth--; if (!depth){ try { return JSON.parse(src.slice(j, k + 1)); } catch { return null; } } }
+  }
+  return null;
+}
+
+async function siteFetch(path){
+  const base = K.proxy || SITE;
+  const r = await fetch(base + path);
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  return r.text();
+}
 
 function page(html, { keepScroll = false } = {}){
   app.innerHTML = html;
@@ -375,7 +477,7 @@ function pager(target, fetchFn, renderFn, emptyHtml = '<div class="empty">Nothin
   const io = new IntersectionObserver(en => { if (en[0].isIntersecting) step(); }, { rootMargin: '700px' });
   io.observe(more);
   step();
-  return { list, reload: () => { io.disconnect(); list.innerHTML = ''; } };
+  return { list };
 }
 
 const seriesCard = s => `<a class="card" href="#/series/${encodeURIComponent(s.slug)}">
@@ -388,26 +490,16 @@ const seriesCard = s => `<a class="card" href="#/series/${encodeURIComponent(s.s
   <div class="card-meta">${s.averageRating != null ? `<span class="star">★</span> ${s.averageRating.toFixed(1)}` : ''}${s.totalChapters ? ` · ${s.totalChapters} ch` : ''}</div>
 </a>`;
 
-const seriesRow = s => `<a class="row" href="#/series/${encodeURIComponent(s.slug)}">
-  <img class="thumb" loading="lazy" src="${esc(img(s.coverImage))}" onerror="this.onerror=null;this.src='${PH}'">
-  <div class="rmain"><div class="rtitle">${esc(s.title)}</div>
-  <div class="rsub">${esc(s.status || '')}${s.totalChapters ? ' · ' + s.totalChapters + ' ch' : ''}</div></div>
-  ${s.averageRating != null ? `<span class="rright"><span class="star">★</span> ${s.averageRating.toFixed(1)}</span>` : ''}
-</a>`;
-
-/* ============================================================
-   views
-   ============================================================ */
 async function vHome(){
   if (!K.key) return vSetup();
-  page(`${'<div class="large"><h1>Discover</h1></div>'}
+  page(`<div class="large"><h1>Discover</h1></div>
     <div class="sec"><div class="sec-h"><h2>Trending</h2><a href="#/browse?sort=average_rating">Browse</a></div></div>
     <div class="hrow" id="r1"></div>
-    <div class="sec"><div class="sec-h"><h2>Top rated</h2><a href="#/discover/top">All</a></div></div>
+    <div class="sec"><div class="sec-h"><h2>Top rated</h2></div></div>
     <div class="hrow" id="r2"></div>
-    <div class="sec"><div class="sec-h"><h2>Recently updated</h2><a href="#/discover/updated">All</a></div></div>
+    <div class="sec"><div class="sec-h"><h2>Recently updated</h2></div></div>
     <div class="hrow" id="r3"></div>
-    <div class="sec"><div class="sec-h"><h2>New releases</h2><a href="#/discover/new">All</a></div></div>
+    <div class="sec"><div class="sec-h"><h2>New releases</h2></div></div>
     <div class="hrow" id="r4"></div>
     <div class="sec"><div class="sec-h"><h2>Random</h2><button class="btn" style="flex:0 0 auto;padding:6px 14px" onclick="shuffle()">Shuffle</button></div></div>
     <div class="hrow" id="r5"></div>`);
@@ -435,7 +527,7 @@ async function vBrowse(q){
   const params = {
     page: 1, limit: 30, sort: q.get('sort') || 'title', order: q.get('order') || 'asc',
     status: q.get('status') || '', orientation: q.get('orientation') || '',
-    search: q.get('search') || '', tags: q.get('tags') || '', letter: q.get('letter') || ''
+    search: q.get('search') || '', tags: q.get('tags') || ''
   };
   page(`${hdr('Browse')}
     <div class="searchbar"><input id="q" placeholder="Search titles" value="${esc(params.search)}"></div>
@@ -447,16 +539,13 @@ async function vBrowse(q){
       <select id="f-sort">
         <option value="title">Title</option><option value="average_rating">Rating</option>
         <option value="total_ratings">Ratings</option><option value="chapter_count">Chapters</option>
-        <option value="release_year">Release year</option><option value="updated_at">Updated</option>
-        <option value="created_at">Added</option></select>
+        <option value="release_year">Release year</option><option value="updated_at">Updated</option></select>
       <select id="f-order"><option value="asc">Asc</option><option value="desc">Desc</option></select>
     </div>
     <div class="pad" id="host"></div>`);
 
-  $('#f-status').value = params.status;
-  $('#f-orient').value = params.orientation;
-  $('#f-sort').value = params.sort;
-  $('#f-order').value = params.order;
+  $('#f-status').value = params.status; $('#f-orient').value = params.orientation;
+  $('#f-sort').value = params.sort; $('#f-order').value = params.order;
 
   const host = $('#host');
   host.innerHTML = '<div class="spin"></div>';
@@ -464,8 +553,7 @@ async function vBrowse(q){
     params.status = $('#f-status').value; params.orientation = $('#f-orient').value;
     params.sort = $('#f-sort').value; params.order = $('#f-order').value;
     params.search = $('#q').value.trim();
-    history.replaceState(null, '', '#/browse?' + new URLSearchParams(
-      Object.entries(params).filter(([, v]) => v)).toString());
+    history.replaceState(null, '', '#/browse?' + new URLSearchParams(Object.entries(params).filter(([, v]) => v)).toString());
     host.innerHTML = '';
     const grid = document.createElement('div'); grid.className = 'grid'; host.appendChild(grid);
     pager(host, p => api('/pornhwa', { params: { ...params, page: p } }),
@@ -479,11 +567,11 @@ async function vBrowse(q){
 
 async function vSearch(){
   page(`${hdr('Search')}
-    <div class="searchbar"><input id="q" placeholder="Series, characters, chapters, creators" autofocus></div>
+    <div class="searchbar"><input id="q" placeholder="Series, characters, scenes, creators"></div>
     <div class="seg" id="seg">
       <button data-t="pornhwa" class="on">Series</button>
       <button data-t="character">Characters</button>
-      <button data-t="chapter">Chapters</button>
+      <button data-t="chapter">Scenes</button>
       <button data-t="creator">Creators</button>
     </div>
     <div id="host"><div class="empty">Type to search the database.</div></div>`);
@@ -495,10 +583,9 @@ async function vSearch(){
     const q = $('#q').value.trim();
     host.innerHTML = '';
     if (!q) { host.innerHTML = '<div class="empty">Type to search the database.</div>'; return; }
-    const grid = document.createElement('div');
+    const grid = document.createElement('div'); grid.className = 'grid';
     const rows = document.createElement('div'); rows.className = 'rows';
     host.appendChild(type === 'pornhwa' ? grid : rows);
-    if (type === 'pornhwa') grid.className = 'grid';
 
     const fetcher = p => {
       if (type === 'pornhwa') return api('/search', { params: { q, type: 'pornhwa', page: p } }).then(r => ({ data: r.data?.pornhwa, pagination: r.pagination?.pornhwa }));
@@ -533,6 +620,18 @@ async function vSearch(){
   let t; $('#q').oninput = () => { clearTimeout(t); t = setTimeout(run, 420); };
 }
 
+/* ---------- series detail ---------- */
+const ICO = {
+  bookmark: '<svg viewBox="0 0 24 24"><path d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.5.87l-4.5-2.58a2 2 0 0 0-2 0L6.5 20.87A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z"/></svg>',
+  track: '<svg viewBox="0 0 24 24"><path d="M16 5H3M11 12H3M16 19H3M18 9v6M21 12h-6"/></svg>',
+  list: '<svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>',
+  flag: '<svg viewBox="0 0 24 24"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.3 2q2 0 3.1-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.5"/></svg>',
+  pen: '<svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>',
+  img: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3-3a2 2 0 0 0-3 0L6 21"/></svg>',
+  play: '<svg viewBox="0 0 24 24"><path d="M6 3.5 20 12 6 20.5z"/></svg>',
+  ext: '<svg viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>'
+};
+
 async function vSeries(slug){
   page(`${hdr('Series')}<div class="spin"></div>`);
   let d;
@@ -541,8 +640,11 @@ async function vSeries(slug){
     d = r.data;
   } catch (e){ page(`${hdr('Series')}${errCard(e)}`); return; }
 
-  const ext = (d.externalLinks || []).map(l => `<a class="chip blue" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.siteName)}</a>`).join('');
-  page(`${hdr(d.title, { right: `<button class="ico" onclick="location.href='${SITE}/pornhwa/${encodeURIComponent(d.slug)}'" target="_blank">↗</button>` })}
+  const site = seriesUrl(d);
+  const rd = readerUrl(d);
+  let selChars = new Set(), tagFilter = '', sortDesc = false, galleryCounts = {};
+
+  page(`${hdr(d.title, { right: `<button class="ico" onclick="window.open('${site}','_blank')">${ICO.ext}</button>` })}
     <div class="hero">
       <div class="hero-bg" style="background-image:url('${esc(img(d.coverImage))}')"></div>
       <div class="hero-in">
@@ -556,67 +658,267 @@ async function vSeries(slug){
       </div>
     </div>
 
-    <div class="actions">
-      <button class="btn primary" id="a-track">Track</button>
-      <button class="btn" id="a-rate">Rate</button>
-      <button class="btn" id="a-fav">♡</button>
+    <div class="actrow">
+      <button class="pill" id="a-fav">${ICO.bookmark}<span>Favorite</span></button>
+      <button class="pill" id="a-track">${ICO.track}<span>Track</span><span style="opacity:.5">▾</span></button>
+      <button class="pill" id="a-lists">${ICO.list}<span>Lists</span><span style="opacity:.5">▾</span></button>
+      <button class="pill" onclick="window.open('${rd}','_blank')">${ICO.play}<span>Read</span></button>
+    </div>
+    <div class="subrow">
+      <button class="linkbtn" onclick="window.open('${site}','_blank')">${ICO.flag}Report wrong info</button>
+      <button class="linkbtn" onclick="window.open('${site}?tab=reviews','_blank')">${ICO.pen}Review</button>
+      <button class="linkbtn" onclick="window.open('${site}/edit','_blank')">Edit</button>
     </div>
 
-    ${(d.alternativeTitles || []).length ? `<div class="desc">${esc(d.alternativeTitles.join(' · '))}</div>` : ''}
-    <div class="tagline">${(d.genreTags || []).map(t => `<a class="chip" href="#/browse?tags=${encodeURIComponent(t)}">${esc(t)}</a>`).join('')}${ext}</div>
-
-    ${d.description ? `<div class="desc clamp" id="desc">${esc(d.description)}</div><button class="more-btn" id="more">More</button>` : ''}
-
-    <div class="stats-strip">
-      <div class="stat"><b>${d.totalChapters ?? '—'}</b><span>Chapters</span></div>
-      <div class="stat"><b>${d.totalRatings ?? 0}</b><span>Ratings</span></div>
-      <div class="stat"><b>${(d.characters || []).length}</b><span>Characters</span></div>
+    <div class="dtabs" id="dtabs">
+      <button data-t="overview" class="on">Overview</button>
+      <button data-t="characters">Characters</button>
+      <button data-t="related">Related Works</button>
+      <button data-t="reviews">Reviews</button>
+      <button data-t="gallery">Gallery</button>
+      <button data-t="stats">Stats</button>
+      <button data-t="log">Edit Log</button>
     </div>
+    <div id="tabbody"></div>`);
 
-    ${(d.creators || []).length ? `<div class="sec"><div class="sec-h"><h2>Creators</h2></div>
-      <div class="rows">${d.creators.map(c => `<a class="row" href="#/creator/${c.id}">
-        <div class="rmain"><div class="rtitle">${esc(c.canonicalName)}</div>
-        <div class="rsub">${esc(c.role)}${(c.aliases || []).length ? ' · ' + esc(c.aliases.join(', ')) : ''}</div></div></a>`).join('')}</div></div>` : ''}
+  const body = $('#tabbody');
+  const loaded = {};
 
-    ${(d.characters || []).length ? `<div class="sec"><div class="sec-h"><h2>Characters</h2></div></div>
-      <div class="avgrid">${d.characters.map(c => `<a class="avcard" href="#/character/${c.id}">
-        <img src="${esc(img(c.image))}" onerror="this.onerror=null;this.src='${PH}'"><span>${esc(c.name)}</span></a>`).join('')}</div>` : ''}
+  /* pairing filter block, reused by overview + characters */
+  const pairBlock = () => `
+    <div class="pfilter">
+      <div class="pf-head"><span>Pairing filter</span>${selChars.size ? '<button id="clr">Clear</button>' : ''}</div>
+    </div>
+    <div class="chips" id="chips">
+      ${(d.characters || []).map(c => `<button class="pchip ${selChars.has(c.id) ? 'on' : ''}" data-id="${c.id}">
+        <img src="${esc(img(c.image))}" onerror="this.onerror=null;this.src='${PH}'">${esc(c.name)}</button>`).join('')}
+    </div>
+    <div class="pfbar">
+      <select id="tagf"><option value="">All content</option>
+        ${[...new Set((d.chapters || []).flatMap(c => c.tags || []))].sort()
+          .map(t => `<option ${tagFilter === t ? 'selected' : ''}>${esc(t)}</option>`).join('')}
+      </select>
+      <button class="btn" id="sortb">Ch. ${sortDesc ? '↓' : '↑'}</button>
+    </div>
+    <div class="pfnote" id="pfnote"></div>`;
 
-    <div class="sec"><div class="sec-h"><h2>Scenes</h2></div></div>
-    <div class="rows" id="chapters"></div>
+  const wirePair = () => {
+    const chips = $('#chips');
+    if (chips) chips.onclick = e => {
+      const b = e.target.closest('.pchip'); if (!b) return;
+      const id = +b.dataset.id;
+      selChars.has(id) ? selChars.delete(id) : selChars.add(id);
+      b.classList.toggle('on');
+      const clr = $('#clr');
+      if (selChars.size && !clr){
+        $('#pfnote').closest('.pfilter').querySelector('.pf-head')
+          .insertAdjacentHTML('beforeend', '<button id="clr">Clear</button>');
+        wireClear();
+      } else if (!selChars.size && clr) clr.remove();
+      renderScenes();
+    };
+    wireClear();
+    const tf = $('#tagf'); if (tf) tf.onchange = () => { tagFilter = tf.value; renderScenes(); };
+    const sb = $('#sortb'); if (sb) sb.onclick = () => { sortDesc = !sortDesc; sb.textContent = 'Ch. ' + (sortDesc ? '↓' : '↑'); renderScenes(); };
+  };
+  function wireClear(){
+    const c = $('#clr');
+    if (c) c.onclick = () => {
+      selChars.clear(); tagFilter = ''; sortDesc = false;
+      [...document.querySelectorAll('.pchip')].forEach(x => x.classList.remove('on'));
+      const tf = $('#tagf'); if (tf) tf.value = '';
+      c.remove(); renderScenes();
+    };
+  }
 
-    <div class="sec"><div class="sec-h"><h2>Reviews</h2><a href="#/reviews?pornhwaId=${d.id}">All</a></div></div>
-    <div id="reviews"></div>
+  function renderScenes(){
+    const box = $('#scenes'); if (!box) return;
+    const need = [...selChars];
+    let rows = d.chapters || [];
+    if (need.length) rows = rows.filter(c => need.every(id => (c.characters || []).some(x => x.id === id)));
+    if (tagFilter) rows = rows.filter(c => (c.tags || []).includes(tagFilter));
+    if (sortDesc) rows = rows.slice().reverse();
 
-    <div class="sec"><div class="sec-h"><h2>Similar</h2></div></div>
-    <div class="hrow" id="similar"></div>`);
+    const note = $('#pfnote');
+    if (note){
+      note.textContent = (need.length ? `${need.length} character${need.length > 1 ? 's' : ''} required together · ` : 'Tap characters to filter by pairing · ')
+        + `${rows.length} of ${(d.chapters || []).length} scenes`;
+    }
 
-  const m = $('#more');
-  if (m) m.onclick = () => { $('#desc').classList.toggle('clamp'); m.textContent = $('#desc').classList.contains('clamp') ? 'More' : 'Less'; };
+    if (!rows.length){ box.innerHTML = '<div class="scene"><div class="sbody"><div class="sdesc">No scenes match this pairing.</div></div></div>'; return; }
 
-  const ch = $('#chapters');
-  if ((d.chapters || []).length){
-    ch.innerHTML = d.chapters.map(c => `<div class="row">
-      <div class="rmain"><div class="rtitle">Ch. ${c.chapterStart}${c.chapterEnd ? '–' + c.chapterEnd : ''}</div>
-      <div class="rsub">${esc(c.description || (c.tags || []).join(', ') || '—')}</div>
-      <div class="tagline" style="padding:6px 0 0">${(c.characters || []).map(x => `<a class="chip" href="#/character/${x.id}">${esc(x.name)}</a>`).join('')}</div></div></div>`).join('');
-  } else ch.innerHTML = '<div class="row"><div class="rmain"><div class="rsub">No scene records.</div></div></div>';
+    box.innerHTML = rows.map(c => {
+      const cnt = galleryCounts[c.chapterStart] || 0;
+      const label = c.chapterEnd ? `${c.chapterStart}–${c.chapterEnd}` : c.chapterStart;
+      return `<div class="scene">
+        <div class="bookmark">${ICO.bookmark}</div>
+        <div class="sbody">
+          <div class="shead">
+            <span class="chlab">CH.</span><span class="chnum">${label}</span>
+            ${cnt ? `<button class="chcount" data-ch="${c.chapterStart}">${ICO.img}${cnt}</button>` : ''}
+          </div>
+          ${c.description ? `<div class="sdesc">${esc(c.description)}</div>` : ''}
+          ${(c.tags || []).length ? `<div class="stags">${c.tags.map(t => `<a class="stag" href="#/chapter/${encodeURIComponent(t)}">${esc(t)}</a>`).join('')}</div>` : ''}
+          ${(c.characters || []).length ? `<div class="schars">${c.characters.map(x => `<a class="schar" href="#/character/${x.id}">
+            <img src="${esc(img(x.image))}" onerror="this.onerror=null;this.src='${PH}'">${esc(x.name)}</a>`).join('')}</div>` : ''}
+        </div>
+        <a class="reader" href="${sceneUrl(d, c)}" target="_blank" rel="noopener">${ICO.play}</a>
+      </div>`;
+    }).join('');
 
-  api('/pornhwa/' + encodeURIComponent(slug) + '/reviews', { params: { limit: 3 } })
-    .then(r => {
-      $('#reviews').innerHTML = (r.data || []).length
-        ? `<div class="rows">${r.data.map(rv => `<div class="row">
-            <div class="rmain"><div class="rtitle">${esc(rv.userDisplayName || 'Anonymous')} ${rv.userRating != null ? '<span class="star">★</span> ' + rv.userRating : ''}</div>
-            <div class="rsub" style="white-space:normal">${esc(rv.reviewText)}</div>
-            <div class="rsub">${when(rv.createdAt)}</div></div></div>`).join('')}</div>`
-        : '<div class="rows"><div class="row"><div class="rmain"><div class="rsub">No reviews yet.</div></div></div></div>';
-    }).catch(() => $('#reviews').innerHTML = '');
+    box.querySelectorAll('.chcount').forEach(b => b.onclick = () => show('gallery'));
+  }
 
-  api('/pornhwa/' + encodeURIComponent(slug) + '/similar', { params: { limit: 12 } })
-    .then(r => { $('#similar').innerHTML = (r.data || []).map(seriesCard).join('') || '<div class="empty" style="padding:16px">—</div>'; })
-    .catch(() => {});
+  const drawOverview = () => {
+    body.innerHTML = `
+      ${(d.alternativeTitles || []).length ? `<div class="desc">${esc(d.alternativeTitles.join(' · '))}</div>` : ''}
+      <div class="tagline">${(d.genreTags || []).map(t => `<a class="chip" href="#/browse?tags=${encodeURIComponent(t)}">${esc(t)}</a>`).join('')}
+        ${(d.externalLinks || []).map(l => `<a class="chip blue" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.siteName)}</a>`).join('')}</div>
+      ${d.description ? `<div class="desc clamp" id="desc">${esc(d.description)}</div><button class="more-btn" id="more">More</button>` : ''}
+      <div class="stats-strip">
+        <div class="stat"><b>${d.totalChapters ?? '—'}</b><span>Chapters</span></div>
+        <div class="stat"><b>${d.totalRatings ?? 0}</b><span>Ratings</span></div>
+        <div class="stat"><b>${(d.characters || []).length}</b><span>Characters</span></div>
+      </div>
+      ${(d.creators || []).length ? `<div class="sec"><div class="sec-h"><h2>Creators</h2></div>
+        <div class="rows">${d.creators.map(c => `<a class="row" href="#/creator/${c.id}">
+          <div class="rmain"><div class="rtitle">${esc(c.canonicalName)}</div>
+          <div class="rsub">${esc(c.role)}${(c.aliases || []).length ? ' · ' + esc(c.aliases.join(', ')) : ''}</div></div></a>`).join('')}</div></div>` : ''}
+      ${pairBlock()}
+      <div class="sec"><div class="sec-h"><h2>Scene log</h2></div></div>
+      <div class="rows" id="scenes"></div>`;
 
-  /* actions */
+    const m = $('#more');
+    if (m) m.onclick = () => { $('#desc').classList.toggle('clamp'); m.textContent = $('#desc').classList.contains('clamp') ? 'More' : 'Less'; };
+    wirePair(); renderScenes();
+  };
+
+  const drawCharacters = () => {
+    body.innerHTML = (d.characters || []).length
+      ? `${pairBlock()}<div class="sec"><div class="sec-h"><h2>All characters</h2></div></div>
+         <div class="avgrid">${d.characters.map(c => `<a class="avcard" href="#/character/${c.id}">
+           <img src="${esc(img(c.image))}" onerror="this.onerror=null;this.src='${PH}'"><span>${esc(c.name)}</span></a>`).join('')}</div>
+         <div class="rows" id="scenes" style="margin-top:16px"></div>`
+      : '<div class="empty">No characters recorded.</div>';
+    if ((d.characters || []).length) { wirePair(); renderScenes(); }
+  };
+
+  const drawRelated = () => {
+    body.innerHTML = '<div class="spin"></div>';
+    api('/pornhwa/' + encodeURIComponent(d.slug) + '/similar', { params: { limit: 24 } })
+      .then(r => {
+        const list = r.data || [];
+        body.innerHTML = list.length
+          ? `<div class="pad"><div class="grid">${list.map(seriesCard).join('')}</div></div>`
+          : '<div class="empty">No related works.</div>';
+      }).catch(e => body.innerHTML = errCard(e));
+  };
+
+  const drawReviews = () => {
+    body.innerHTML = '<div class="pad" id="rhost"></div>';
+    pager($('#rhost'), p => api('/pornhwa/' + encodeURIComponent(d.slug) + '/reviews', { params: { page: p, limit: 20 } }), rv => {
+      const w = document.createElement('div');
+      w.className = 'rows'; w.style.margin = '0 0 10px';
+      w.innerHTML = `<div class="row"><div class="rmain">
+        <div class="rtitle">${esc(rv.userDisplayName || 'Anonymous')} ${rv.userRating != null ? '<span class="star">★</span> ' + rv.userRating : ''}</div>
+        <div class="rsub" style="white-space:normal">${esc(rv.reviewText)}</div>
+        <div class="rsub">${when(rv.createdAt)}</div></div></div>`;
+      return w;
+    }, '<div class="empty">No reviews yet.</div>');
+  };
+
+  const drawGallery = async () => {
+    body.innerHTML = '<div class="spin"></div>';
+    let panels = [];
+    try {
+      const html = await siteFetch(`/pornhwa/${d.id}/${encodeURIComponent(d.slug)}/gallery`);
+      const g = jsonAfter(nextPayload(html), 'initialGalleryPage');
+      panels = g?.panels || [];
+      galleryCounts = {};
+      panels.forEach(p => { const k = p.chapter_start ?? p.gallery_chapter_number; if (k) galleryCounts[k] = (galleryCounts[k] || 0) + 1; });
+    } catch (e) {
+      body.innerHTML = `<div class="err"><b>GALLERY UNAVAILABLE</b>${esc(e.message)}<br>
+        The gallery is not in the API, so it is read from the site page. If this keeps failing, set a site proxy in Settings.</div>
+        <div class="pad"><a class="btn primary" style="display:block;text-align:center" href="${site}/gallery" target="_blank">Open gallery on site</a></div>`;
+      return;
+    }
+    if (!panels.length){ body.innerHTML = '<div class="empty">No gallery images yet.</div>'; return; }
+
+    body.innerHTML = `<div class="pad" style="display:flex;justify-content:space-between;align-items:baseline">
+        <span style="font-size:13px;color:var(--txt2)">${panels.length} panels</span>
+        <a class="linkbtn" href="${site}/gallery" target="_blank">Full gallery ${ICO.ext}</a></div>
+      <div class="masonry" id="gal"></div>`;
+
+    $('#gal').innerHTML = panels.map(p => {
+      const s = p.chapter_start ?? p.gallery_chapter_number;
+      const e = p.chapter_end;
+      const lab = s ? (e && e !== s ? `Ch. ${s}–${e}` : `Ch. ${s}`) : 'Ch. ?';
+      const ar = parseFloat(p.aspect_ratio) || 0.5;
+      return `<a class="panel" data-full="${esc(p.image_path)}" data-lab="${esc(lab)}" style="aspect-ratio:${ar}/1">
+        <img loading="lazy" src="${esc(p.thumbnail_path || p.image_path)}" onerror="this.onerror=null;this.src='${PH}'">
+        ${p.total_likes ? `<span class="likes">♥ ${p.total_likes}</span>` : ''}
+        <span class="chbadge">${esc(lab)}${e && e !== s ? '<i>?</i>' : ''}</span></a>`;
+    }).join('');
+
+    $('#gal').querySelectorAll('.panel').forEach(a => a.onclick = () => lightbox(a.dataset.full, a.dataset.lab));
+  };
+
+  const drawStats = async () => {
+    body.innerHTML = '<div class="spin"></div>';
+    try {
+      const { data } = await api('/pornhwa/' + encodeURIComponent(d.slug) + '/ratings');
+      const dist = data.ratingDistribution || {};
+      const total = data.totalRatings || 0;
+      body.innerHTML = `
+        <div class="stats-strip">
+          <div class="stat"><b>${data.averageRating != null ? data.averageRating.toFixed(2) : '—'}</b><span>Average</span></div>
+          <div class="stat"><b>${total}</b><span>Ratings</span></div>
+          <div class="stat"><b>${d.totalChapters ?? '—'}</b><span>Chapters</span></div>
+        </div>
+        <div class="sec-h" style="padding:14px 16px 8px"><h2 style="font-size:16px">Rating distribution</h2></div>
+        <div class="dist">${['5','4.5','4','3.5','3','2.5','2','1.5','1','0.5'].map(k => {
+          const n = dist[k] || 0, pct = total ? (n / total) * 100 : 0;
+          return `<div class="distrow"><span style="width:26px">${k}</span>
+            <span class="dbar"><span class="dfill" style="width:${pct}%"></span></span>
+            <span style="width:28px;text-align:right">${n}</span></div>`;
+        }).join('')}</div>
+        <div class="pad"><div class="rows"><div class="row"><div class="rmain">
+          <div class="rtitle">Views &amp; activity</div><div class="rsub">Full statistics live on the site.</div></div>
+          <a class="rright" href="${site}?tab=stats" target="_blank">Open</a></div></div></div>`;
+    } catch (e){ body.innerHTML = errCard(e); }
+  };
+
+  const drawLog = () => {
+    body.innerHTML = `<div class="pad"><div class="rows"><div class="row"><div class="rmain">
+      <div class="rtitle">Edit Log</div><div class="rsub">Not exposed by the API. Open the site to read it.</div></div>
+      <a class="rright" href="${site}?tab=editLog" target="_blank">Open</a></div></div></div>`;
+  };
+
+  const draws = { overview: drawOverview, characters: drawCharacters, related: drawRelated,
+    reviews: drawReviews, gallery: drawGallery, stats: drawStats, log: drawLog };
+
+  function show(t){
+    [...$('#dtabs').children].forEach(b => b.classList.toggle('on', b.dataset.t === t));
+    body.innerHTML = '<div class="spin"></div>';
+    if (!loaded[t] || t === 'overview' || t === 'characters'){ loaded[t] = true; draws[t](); }
+    else draws[t]();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+  $('#dtabs').onclick = e => { const b = e.target.closest('button'); if (b) show(b.dataset.t); };
+  show('overview');
+
+  $('#a-fav').onclick = async () => {
+    try {
+      const cur = await api('/me/tracking/' + encodeURIComponent(d.slug) + '/favorite');
+      if (cur.data.favorited){ await api('/me/tracking/' + encodeURIComponent(d.slug) + '/favorite', { method: 'DELETE' });
+        $('#a-fav').classList.remove('on'); toast('Unfavorited'); }
+      else { await api('/me/tracking/' + encodeURIComponent(d.slug) + '/favorite', { method: 'PUT' });
+        $('#a-fav').classList.add('on'); toast('Favorited'); }
+    } catch (e){ toast(e.code === 'NOT_FOUND' ? 'Track it first' : e.message, true); }
+  };
+  api('/me/tracking/' + encodeURIComponent(d.slug) + '/favorite')
+    .then(r => { if (r.data.favorited) $('#a-fav').classList.add('on'); }).catch(() => {});
+
   $('#a-track').onclick = async () => {
     let cur = null;
     try { cur = (await api('/me/tracking/' + encodeURIComponent(d.slug))).data; } catch {}
@@ -624,8 +926,7 @@ async function vSeries(slug){
     const { root, close } = openSheet('Tracking', `
       <div>${opts.map(s => `<button class="sheet-item ${cur?.status === s ? 'sel' : ''}" data-s="${s}">${lblStatus(s)}</button>`).join('')}</div>
       ${cur ? '<div style="margin-top:14px"><button class="btn danger" id="del">Remove from library</button></div>' : ''}
-      ${cur ? `<div style="margin-top:14px" class="desc" style="padding:0">Progress: ${cur.currentChapter ?? 0}${cur.pornhwa?.totalChapters ? ' / ' + cur.pornhwa.totalChapters : ''}</div>
-      <div class="actions" style="padding:10px 0 0"><button class="btn" id="inc">+1 chapter</button><button class="btn" id="done">Mark completed</button></div>` : ''}`);
+      ${cur ? `<div class="actions" style="padding:14px 0 0"><button class="btn" id="inc">+1 chapter</button><button class="btn" id="done">Mark completed</button></div>` : ''}`);
     root.querySelectorAll('.sheet-item').forEach(b => b.onclick = async () => {
       try { await api('/me/tracking/' + encodeURIComponent(d.slug), { method: 'PUT', body: { status: b.dataset.s } });
         toast('Saved'); close(); } catch (e){ toast(e.message, true); }
@@ -640,34 +941,39 @@ async function vSeries(slug){
       try { const r = await api('/me/tracking/' + encodeURIComponent(d.slug) + '/actions/increment-chapter', { method: 'POST' });
         toast('Chapter ' + r.data.currentChapter); close(); } catch (e){ toast(e.message, true); }
     };
-    const doneB = root.querySelector('#done');
-    if (doneB) doneB.onclick = async () => {
+    const dn = root.querySelector('#done');
+    if (dn) dn.onclick = async () => {
       try { await api('/me/tracking/' + encodeURIComponent(d.slug) + '/actions/mark-completed', { method: 'POST' });
         toast('Completed'); close(); } catch (e){ toast(e.message, true); }
     };
   };
 
-  $('#a-rate').onclick = () => {
-    const { root, close } = openSheet('Rate', `<div>${[5,4.5,4,3.5,3,2.5,2,1.5,1,.5].map(v =>
-      `<button class="sheet-item" data-v="${v}"><span class="star">${'★'.repeat(v)}</span> ${v}</button>`).join('')}</div>`);
-    root.querySelectorAll('.sheet-item').forEach(b => b.onclick = async () => {
-      try { const r = await api('/me/tracking/' + encodeURIComponent(d.slug) + '/rating', { method: 'PATCH', body: { rating: +b.dataset.v } });
-        toast(r.data.moderationStatus === 'pending' ? 'Rating held for review' : 'Rated ' + b.dataset.v); close(); }
-      catch (e){ toast(e.code === 'NOT_FOUND' ? 'Track it first' : e.message, true); }
-    });
-  };
-
-  $('#a-fav').onclick = async () => {
+  $('#a-lists').onclick = async () => {
+    const { root } = openSheet('Lists', '<div class="spin" style="margin:20px auto"></div>');
     try {
-      const cur = await api('/me/tracking/' + encodeURIComponent(d.slug) + '/favorite');
-      if (cur.data.favorited){ await api('/me/tracking/' + encodeURIComponent(d.slug) + '/favorite', { method: 'DELETE' });
-        $('#a-fav').classList.remove('on'); $('#a-fav').textContent = '♡'; toast('Unfavorited'); }
-      else { await api('/me/tracking/' + encodeURIComponent(d.slug) + '/favorite', { method: 'PUT' });
-        $('#a-fav').classList.add('on'); $('#a-fav').textContent = '♥'; toast('Favorited'); }
-    } catch (e){ toast(e.code === 'NOT_FOUND' ? 'Track it first' : e.message, true); }
+      const me = (await api('/me')).data;
+      const r = await api('/u/' + encodeURIComponent(me.uid) + '/lists', { params: { limit: 30 } });
+      const lists = r.data || [];
+      root.querySelector('.sheet').innerHTML = `<div class="sheet-grab"></div><h3>Lists</h3>
+        ${lists.length ? lists.map(l => `<a class="sheet-item" href="#/list/${encodeURIComponent(l.username || me.username)}/${encodeURIComponent(l.slug)}">
+          ${esc(l.title)} <span style="color:var(--txt3);font-size:12px">· ${l.itemCount}</span></a>`).join('')
+          : '<div class="empty" style="padding:20px">No public lists yet.</div>'}
+        <div class="actions" style="padding:14px 0 0"><a class="btn primary" style="display:block;text-align:center"
+          href="${site}" target="_blank">Add to a list on site</a></div>`;
+    } catch (e){
+      root.querySelector('.sheet').innerHTML = `<div class="sheet-grab"></div><h3>Lists</h3>${errCard(e)}`;
+    }
   };
-  api('/me/tracking/' + encodeURIComponent(d.slug) + '/favorite')
-    .then(r => { if (r.data.favorited){ $('#a-fav').classList.add('on'); $('#a-fav').textContent = '♥'; } }).catch(() => {});
+}
+
+function lightbox(src, label){
+  const el = document.createElement('div');
+  el.className = 'lightbox';
+  el.innerHTML = `<button class="lb-close">✕</button><img src="${esc(src)}" onerror="this.src='${PH}'"><div class="lb-ch">${esc(label || '')}</div>`;
+  document.body.appendChild(el);
+  const close = () => el.remove();
+  el.querySelector('.lb-close').onclick = close;
+  el.onclick = e => { if (e.target === el) close(); };
 }
 
 async function vCharacter(id){
@@ -833,7 +1139,6 @@ async function vLibrary(){
           <div class="rows">
             <div class="row"><div class="rmain"><div class="rtitle">Requests / minute</div></div><span class="rright">${data.limits.requestsPerMinute}</span></div>
             <div class="row"><div class="rmain"><div class="rtitle">Writes / minute</div></div><span class="rright">${data.limits.mutationsPerMinute}</span></div>
-            <div class="row"><div class="rmain"><div class="rtitle">Writes / hour</div></div><span class="rright">${data.limits.mutationsPerHour}</span></div>
           </div></div>`;
       } catch (e){ host.innerHTML = errCard(e); }
       return;
@@ -842,23 +1147,21 @@ async function vLibrary(){
     const rows = document.createElement('div'); rows.className = 'rows'; host.appendChild(rows);
 
     if (type === 'tracking'){
-      const shelves = ['reading','re_reading','plan_to_read','on_hold','completed','dropped'];
       const bar = document.createElement('div');
       bar.className = 'filters';
-      bar.innerHTML = `<select id="sh"><option value="">All shelves</option>${shelves.map(s => `<option value="${s}">${lblStatus(s)}</option>`).join('')}</select>
-        <select id="so"><option value="updated_at">Updated</option><option value="title">Title</option><option value="priority">Priority</option><option value="progress">Progress</option></select>`;
+      bar.innerHTML = `<select id="sh"><option value="">All shelves</option>
+        ${['reading','re_reading','plan_to_read','on_hold','completed','dropped'].map(s => `<option value="${s}">${lblStatus(s)}</option>`).join('')}</select>`;
       host.insertBefore(bar, rows);
-      pager(host, p => api('/me/tracking', { params: { page: p, limit: 30, status: bar.querySelector('#sh').value, sort: bar.querySelector('#so').value } }),
-        x => { const w = document.createElement('div'); w.innerHTML = `<a class="row" href="#/series/${encodeURIComponent(x.pornhwa.slug)}">
+      const load = () => pager(host, p => api('/me/tracking', { params: { page: p, limit: 30, status: bar.querySelector('#sh').value } }),
+        x => { const w = document.createElement('div');
+          w.innerHTML = `<a class="row" href="#/series/${encodeURIComponent(x.pornhwa.slug)}">
           <img class="thumb" src="${esc(img(x.pornhwa.coverImage))}" onerror="this.onerror=null;this.src='${PH}'">
           <div class="rmain"><div class="rtitle">${esc(x.pornhwa.title)}</div>
-          <div class="rsub">${lblStatus(x.status)} · ch. ${x.currentChapter ?? 0}${x.pornhwa.totalChapters ? '/' + x.pornhwa.totalChapters : ''}${x.priority ? ' · P' + x.priority : ''}</div></div></a>`;
+          <div class="rsub">${lblStatus(x.status)} · ch. ${x.currentChapter ?? 0}${x.pornhwa.totalChapters ? '/' + x.pornhwa.totalChapters : ''}</div></div></a>`;
           return w.firstElementChild; }, '<div class="empty">Library is empty.</div>');
-      bar.querySelectorAll('select').forEach(s => s.onchange = () => { host.querySelector('.loadmore')?.remove();
-        rows.innerHTML = ''; pager(host, p => api('/me/tracking', { params: { page: p, limit: 30, status: bar.querySelector('#sh').value, sort: bar.querySelector('#so').value } }),
-        x => { const w = document.createElement('div'); w.innerHTML = `<a class="row" href="#/series/${encodeURIComponent(x.pornhwa.slug)}">
-          <div class="rmain"><div class="rtitle">${esc(x.pornhwa.title)}</div>
-          <div class="rsub">${lblStatus(x.status)}</div></div></a>`; return w.firstElementChild; }); });
+      load();
+      bar.querySelector('#sh').onchange = () => { host.querySelectorAll('.loadmore').forEach(n => n.remove());
+        rows.innerHTML = ''; load(); };
     }
 
     if (type === 'ratings'){
@@ -867,13 +1170,13 @@ async function vLibrary(){
         w.innerHTML = `<a class="row" href="#/series/${encodeURIComponent(x.pornhwaSlug)}">
           <img class="thumb" src="${esc(img(x.pornhwaCover))}" onerror="this.onerror=null;this.src='${PH}'">
           <div class="rmain"><div class="rtitle">${esc(x.pornhwaTitle)}</div>
-          <div class="rsub"><span class="star">${'★'.repeat(x.rating)}</span> ${x.rating}${x.pendingRating ? ' · pending ' + x.pendingRating : ''}</div></div></a>`;
+          <div class="rsub"><span class="star">${'★'.repeat(x.rating)}</span> ${x.rating}</div></div></a>`;
         return w.firstElementChild;
       }, '<div class="empty">No ratings.</div>');
     }
 
     if (type === 'favorites'){
-      pager(host, p => api('/me/favorites', { params: { page: p, limit: 30, type: 'pornhwa' } }), async x => {
+      pager(host, p => api('/me/favorites', { params: { page: p, limit: 30, type: 'pornhwa' } }), x => {
         const w = document.createElement('div');
         w.innerHTML = `<a class="row" href="#/series/${x.resourceId}">
           <div class="rmain"><div class="rtitle">Series #${x.resourceId}</div>
@@ -902,7 +1205,7 @@ async function vMore(){
       <a class="row" href="#/stats"><div class="rmain"><div class="rtitle">Database stats</div></div><span class="rright">›</span></a>
     </div>
     <div class="rows" style="margin-top:18px">
-      <a class="row" href="#/settings"><div class="rmain"><div class="rtitle">Settings</div><div class="rsub">API key, base URL, appearance</div></div><span class="rright">›</span></a>
+      <a class="row" href="#/settings"><div class="rmain"><div class="rtitle">Settings</div><div class="rsub">API key, proxies, appearance</div></div><span class="rright">›</span></a>
       <a class="row" href="${SITE}/docs" target="_blank" rel="noopener"><div class="rmain"><div class="rtitle">API docs</div></div><span class="rright">↗</span></a>
     </div>`);
 }
@@ -997,13 +1300,12 @@ async function vStats(){
   try {
     const { data: s } = await api('/stats');
     page(`${hdr('Stats')}
-      <div class="stats-strip" style="flex-wrap:wrap">
+      <div class="stats-strip">
         <div class="stat"><b>${s.totalPornhwa}</b><span>Series</span></div>
         <div class="stat"><b>${s.totalCharacters}</b><span>Characters</span></div>
         <div class="stat"><b>${s.totalChapters}</b><span>Scenes</span></div>
         <div class="stat"><b>${s.totalReviews}</b><span>Reviews</span></div>
         <div class="stat"><b>${s.totalRatings}</b><span>Ratings</span></div>
-        <div class="stat"><b>${(s.totalTags.genre + s.totalTags.character + s.totalTags.chapter)}</b><span>Tags</span></div>
       </div>`);
   } catch (e){ page(`${hdr('Stats')}${errCard(e)}`); }
 }
@@ -1016,13 +1318,14 @@ function vSetup(){
     <input id="k" class="mono" placeholder="pwdb_…" value="${esc(K.key)}" autocomplete="off" autocapitalize="off" spellcheck="false">
     <label>API base URL</label>
     <input id="b" class="mono" value="${esc(K.base)}" autocapitalize="off" spellcheck="false">
+    <label>Site proxy for gallery (optional)</label>
+    <input id="p" class="mono" value="${esc(K.proxy)}" placeholder="https://your-worker.workers.dev" autocapitalize="off" spellcheck="false">
     <button class="btn primary" id="go">Connect</button>
-    <p style="margin-top:16px;font-size:12.5px">Get a key at <a href="${SITE}/docs" target="_blank" rel="noopener" style="color:var(--blue)">pornhwadb.com/docs</a>. Keys need the <span class="mono">catalogue:read</span> scope for browsing and <span class="mono">library:read</span>/<span class="mono">library:write</span> for tracking.</p>
   </div>`);
   $('#go').onclick = async () => {
-    const key = $('#k').value.trim(), base = $('#b').value.trim();
+    const key = $('#k').value.trim();
     if (!key) return toast('Enter an API key', true);
-    K.key = key; K.base = base;
+    K.key = key; K.base = $('#b').value.trim(); K.proxy = $('#p').value.trim();
     try { await api('/me'); toast('Connected'); location.hash = '#/'; }
     catch (e){ toast(e.code === 'INSUFFICIENT_SCOPE' ? 'Key works (no library scope)' : e.message, true); }
   };
@@ -1035,6 +1338,9 @@ function vSettings(){
       <input id="k" class="mono" value="${esc(K.key)}" autocomplete="off" autocapitalize="off" spellcheck="false" style="margin-top:6px">
       <label style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin:16px 0 6px">API base URL</label>
       <input id="b" class="mono" value="${esc(K.base)}" autocapitalize="off" spellcheck="false">
+      <label style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);margin:16px 0 6px">Site proxy for gallery</label>
+      <input id="p" class="mono" value="${esc(K.proxy)}" placeholder="https://your-worker.workers.dev" autocapitalize="off" spellcheck="false">
+      <p style="margin-top:8px;font-size:12px;color:var(--txt3)">Gallery, edit log and comments are not in the API — they are read from the site page, so the gallery needs a proxy returning pornhwadb.com HTML with CORS headers.</p>
       <button class="btn primary" id="save" style="margin-top:16px">Save</button>
       <div class="sec-h" style="margin-top:26px"><h2>Appearance</h2></div>
       <div class="seg" id="th" style="margin:8px 0 0">
@@ -1048,36 +1354,25 @@ function vSettings(){
         <button class="row" id="who" style="width:100%"><div class="rmain"><div class="rtitle">Verify key</div></div></button>
         <button class="row" id="clr" style="width:100%"><div class="rmain"><div class="rtitle">Clear cache</div></div></button>
       </div>
-      <p style="margin-top:22px;font-size:12px;color:var(--txt3)">Everything is stored locally in this browser. Browsing needs <span class="mono">catalogue:read</span>; library screens need <span class="mono">library:read</span>.</p>
     </div>`);
 
-  $('#save').onclick = () => { K.key = $('#k').value.trim(); K.base = $('#b').value.trim(); toast('Saved'); };
+  $('#save').onclick = () => { K.key = $('#k').value.trim(); K.base = $('#b').value.trim(); K.proxy = $('#p').value.trim(); toast('Saved'); };
   $('#th').onclick = e => {
     const b = e.target.closest('button'); if (!b) return;
     [...$('#th').children].forEach(x => x.classList.remove('on'));
     b.classList.add('on'); K.theme = b.dataset.t;
     document.documentElement.dataset.theme = K.theme || '';
   };
-  $('#ping').onclick = async () => {
-    try { const r = await api('/health'); toast('OK · v' + r.version); } catch (e){ toast(e.message, true); }
-  };
-  $('#who').onclick = async () => {
-    try { const r = await api('/me'); toast('Key valid for ' + r.data.username); } catch (e){ toast(e.code || e.message, true); }
-  };
+  $('#ping').onclick = async () => { try { const r = await api('/health'); toast('OK · v' + r.version); } catch (e){ toast(e.message, true); } };
+  $('#who').onclick = async () => { try { const r = await api('/me'); toast('Key valid for ' + r.data.username); } catch (e){ toast(e.code || e.message, true); } };
   $('#clr').onclick = () => {
     Object.keys(localStorage).filter(k => k.startsWith('pwdb.c:')).forEach(k => localStorage.removeItem(k));
     memCache.clear(); toast('Cache cleared');
   };
 }
 
-/* ============================================================
-   router
-   ============================================================ */
 const TABS = ['/', '/browse', '/search', '/library', '/more'];
-
-function setTab(path){
-  document.querySelectorAll('#tabbar a').forEach(a => a.classList.toggle('on', a.dataset.tab === path));
-}
+function setTab(path){ document.querySelectorAll('#tabbar a').forEach(a => a.classList.toggle('on', a.dataset.tab === path)); }
 
 async function route(){
   const raw = location.hash.slice(1) || '/';
@@ -1110,15 +1405,9 @@ async function route(){
       case 'leaderboard': return vLeaderboard();
       case 'stats': return vStats();
       case 'settings': return vSettings();
-      case 'discover': {
-        const map = { trending: 'trending', top: 'top-rated', updated: 'recently-updated', new: 'new' };
-        return vHome();
-      }
       default: return vHome();
     }
-  } catch (e){
-    page(`${hdr('Error')}${errCard(e)}`);
-  }
+  } catch (e){ page(`${hdr('Error')}${errCard(e)}`); }
 }
 
 window.addEventListener('hashchange', route);
